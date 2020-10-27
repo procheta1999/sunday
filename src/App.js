@@ -1,23 +1,25 @@
 import logo from './logo.svg';
-import './App.css';
+import { trackPromise } from 'react-promise-tracker';
+import { Route, Switch } from 'react-router-dom';
+import Intro from './pages/intro';
+import LoadingOverlay from 'react-loading-overlay';
+
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+<LoadingOverlay
+  active
+  spinner
+
+  text='Loading your content...'
+  >
+      <Switch>
+    
+        <Route exact path="/" component={Intro}/>
+      </Switch>
+      </LoadingOverlay>
     </div>
   );
 }
